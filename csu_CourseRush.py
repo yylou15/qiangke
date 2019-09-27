@@ -118,6 +118,7 @@ def refreshCourses():
         print("refresh Courses failed!")
 
 def fixCookie():
+    retryTime=0
     while 1:
         res = ses.get("http://csujwc.its.csu.edu.cn/jsxsd/xsxk/xklc_list")
         URLs = re.findall(r'<a\shref="(.*?)"\starget="blank">进入选课</a>', res.text)
@@ -160,7 +161,7 @@ try: # 查询可选课程列表
             raise NameError("Redo query")
 except Exception as e:
     print(e)
-    retryTime=0 # 获取选课查询链接
+     # 获取选课查询链接
     fixCookie()
     
 
